@@ -13,9 +13,9 @@
 
 /* Compiler specific error format */
 #ifdef _MSC_VER
-const char testlib_error_format[] = "%s(%u) : error C2999: %s in %s\n";
+const char testlib_error_format[] = "%s(%u) : error C2999: %s FAILED\n";
 #else
-const char testlib_error_format[] = "%s:%u: error: %s in %s\n";
+const char testlib_error_format[] = "%s:%u: error: %s FAILED\n";
 #endif
 
 const char testlib_fixture_delimiter[] = "------------------------------\n";
@@ -42,11 +42,11 @@ static testlib_void_function testlib_fixture_teardown_func = 0;
 /*
  * Error reporting
  */
-void testlib_assert_result_log(int expression, const char* message, const char* file, const char* function, unsigned int line)
+void testlib_assert_result_log(int expression, const char* message, const char* file, unsigned int line)
 {
     if (!expression)
     {
-        printf(testlib_error_format, file, line, message, function);
+        printf(testlib_error_format, file, line, message);
         testlib_asserts_failed++;
     }
     else

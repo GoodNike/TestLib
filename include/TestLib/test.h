@@ -21,33 +21,33 @@ extern "C" {
  * Assert Macros
  */
 #define assert(expression) \
-    ( testlib_assert_result((expression), ("assert(" #expression ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((expression), ("assert(" #expression ")"), __FILE__, __LINE__) )
 #define assert_true(value) \
-    ( testlib_assert_result((value), ("assert_true(" #value ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((value), ("assert_true(" #value ")"), __FILE__, __LINE__) )
 #define assert_false(value) \
-    ( testlib_assert_result(!(value), ("assert_false(" #value ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result(!(value), ("assert_false(" #value ")"), __FILE__, __LINE__) )
 #define assert_equal(actual, expected) \
-    ( testlib_assert_result((actual) == (expected), ("assert_equal(" #actual ", " #expected ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((actual) == (expected), ("assert_equal(" #actual ", " #expected ")"), __FILE__, __LINE__) )
 #define assert_not_equal(actual, expected) \
-    ( testlib_assert_result((actual) != (expected), ("assert_not_equal(" #actual ", " #expected ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((actual) != (expected), ("assert_not_equal(" #actual ", " #expected ")"), __FILE__, __LINE__) )
 #define assert_null(value) \
-    ( testlib_assert_result((void*)(value) == 0, ("assert_null(" #value ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((void*)(value) == 0, ("assert_null(" #value ")"), __FILE__, __LINE__) )
 #define assert_not_null(value) \
-    ( testlib_assert_result((void*)(value) != 0, ("assert_not_null(" #value ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((void*)(value) != 0, ("assert_not_null(" #value ")"), __FILE__, __LINE__) )
 #define assert_string_equal(actual, expected) \
-    ( testlib_assert_result(!(strcmp((const char*)(actual), (const char*)(expected))), ("assert_string_equal(" #actual ", " #expected ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result(!(strcmp((const char*)(actual), (const char*)(expected))), ("assert_string_equal(" #actual ", " #expected ")"), __FILE__, __LINE__) )
 #define assert_string_not_equal(actual, expected) \
-    ( testlib_assert_result((strcmp((const char*)(actual), (const char*)(expected))), ("assert_string_not_equal(" #actual ", " #expected ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((strcmp((const char*)(actual), (const char*)(expected))), ("assert_string_not_equal(" #actual ", " #expected ")"), __FILE__, __LINE__) )
 #define assert_double_equal(actual, expected, delta) \
-    ( testlib_assert_result(((fabs((double)(actual) - (expected)) <= fabs((double)(delta)))), ("assert_double_equal(" #actual ", " #expected ", " #delta ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result(((fabs((double)(actual) - (expected)) <= fabs((double)(delta)))), ("assert_double_equal(" #actual ", " #expected ", " #delta ")"), __FILE__, __LINE__) )
 #define assert_double_not_equal(actual, expected, delta) \
-    ( testlib_assert_result(((fabs((double)(actual) - (expected)) > fabs((double)(delta)))), ("assert_double_not_equal(" #actual ", " #expected ", " #delta ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result(((fabs((double)(actual) - (expected)) > fabs((double)(delta)))), ("assert_double_not_equal(" #actual ", " #expected ", " #delta ")"), __FILE__, __LINE__) )
 #define assert_binary_equal(actual, expected, size) \
-    ( testlib_assert_result(!(memcmp((const void*)(actual), (const void*)(expected), (size_t)(size))), ("assert_binary_equal(" #actual ", " #expected ", " #size ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result(!(memcmp((const void*)(actual), (const void*)(expected), (size_t)(size))), ("assert_binary_equal(" #actual ", " #expected ", " #size ")"), __FILE__, __LINE__) )
 #define assert_binary_not_equal(actual, expected, size) \
-    ( testlib_assert_result((memcmp((const void*)(actual), (const void*)(expected), (size_t)(size))), ("assert_binary_not_equal(" #actual ", " #expected ", " #size ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result((memcmp((const void*)(actual), (const void*)(expected), (size_t)(size))), ("assert_binary_not_equal(" #actual ", " #expected ", " #size ")"), __FILE__, __LINE__) )
 #define assert_fail(message) \
-    ( testlib_assert_result(0, ("assert_fail(" #message ")"), __FILE__, __FUNCTION__, __LINE__) )
+    ( testlib_assert_result(0, ("assert_fail(" #message ")"), __FILE__, __LINE__) )
 
 /*
  * Tests Management
@@ -70,7 +70,7 @@ extern "C" {
 /*
  * Internal
  */
-typedef void (*testlib_assert_result_function)(int expression, const char* message, const char* file, const char* function, unsigned int line);
+typedef void (*testlib_assert_result_function)(int expression, const char* message, const char* file, unsigned int line);
 typedef void (*testlib_void_function)(void);
 
 extern testlib_assert_result_function testlib_assert_result;

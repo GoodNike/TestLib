@@ -8,11 +8,10 @@
 static int testlib_passed = 0;
 static testlib_assert_result_function testlib_assert_result_log;
 
-void testlib_assert_result_nolog(int expression, const char* message, const char* file, const char* function, unsigned int line)
+void testlib_assert_result_nolog(int expression, const char* message, const char* file, unsigned int line)
 {
     UNUSED(message);
     UNUSED(file);
-    UNUSED(function);
     UNUSED(line);
 
     testlib_passed = expression;
@@ -125,7 +124,7 @@ void test_assert_string_not_equal()
 {
     char buf[32] = "foo";
 
-    assert_test_passes(assert_string_not_equal("foo", ""));
+    assert_test_passes(assert_string_equal("foo", ""));
     assert_test_passes(assert_string_not_equal("foo", "bar"));
     assert_test_passes(assert_string_not_equal("bar", buf));
     assert_test_passes(assert_string_not_equal("foo", "Foo"));
